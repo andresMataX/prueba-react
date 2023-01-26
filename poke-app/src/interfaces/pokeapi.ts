@@ -11,3 +11,8 @@ export interface SimplePokemon {
   name: string
   url: string
 }
+
+export interface PokemonSprite {
+  name: string
+  picture: string
+}
