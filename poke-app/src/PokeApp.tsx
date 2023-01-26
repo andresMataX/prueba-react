@@ -1,18 +1,37 @@
-import { SearcherInput, PokeCard } from './components'
+import { useEffect, useState } from 'react'
+import { SearcherInput, PokeList, Loading } from './components'
+import { pokeApi } from './api/pokeApi'
+import { PokemonsResp, SimplePokemon } from './interfaces/pokeapi'
 
 interface Props {}
 
 export const PokeApp = ({}: Props) => {
+  const [isLoading, setIsLoading] = useState(true)
+  const [simplePokemonList, setSimplePokemonList] = useState<SimplePokemon[]>(
+    []
+  )
+
+  const getAllPokemons = async () => {
+    setIsLoading(true)
+
+    const resp = await pokeApi.get<PokemonsResp>(
+      'https://pokeapi.co/api/v2/pokemon?limit=1279'
+    )
+
+    setSimplePokemonList(resp.data.results)
+
+    setIsLoading(false)
+  }
+
+  useEffect(() => {
+    getAllPokemons()
+  }, [])
+
   return (
     <div className="mt-6">
       <SearcherInput />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
-        <PokeCard />
-        <PokeCard />
-        <PokeCard />
-        <PokeCard />
-      </div>
+      {isLoading ? <Loading /> : <PokeList />}
     </div>
   )
 }
