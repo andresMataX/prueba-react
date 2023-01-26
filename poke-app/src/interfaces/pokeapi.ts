@@ -13,6 +13,7 @@ export interface SimplePokemon {
 }
 
 export interface PokemonSprite {
+  id: string
   name: string
   picture: string
 }

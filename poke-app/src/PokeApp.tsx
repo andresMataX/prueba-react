@@ -33,7 +33,7 @@ export const PokeApp = ({}: Props) => {
       const id = urlParts[urlParts.length - 2]
       const picture = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
 
-      return { name, picture }
+      return { id, name, picture }
     })
 
     setSimplePokemonList(pokemonWithSprite)
@@ -44,10 +44,10 @@ export const PokeApp = ({}: Props) => {
   }, [])
 
   return (
-    <div className="mt-6">
+    <div className="mt-6 mb-3">
       <SearcherInput />
 
-      {isLoading ? <Loading /> : <PokeList />}
+      {isLoading ? <Loading /> : <PokeList pokeList={simplePokemonList} />}
     </div>
   )
 }
