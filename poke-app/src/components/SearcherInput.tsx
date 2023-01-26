@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useDebouncedValue } from '../hooks/useDebouncedValue'
+import { useDebouncedValue } from '../hooks'
+import { PokemonSprite } from '../interfaces/pokeapi'
 
 interface Props {
   onDebounce: (value: string) => void

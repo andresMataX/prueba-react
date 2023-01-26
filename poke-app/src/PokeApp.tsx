@@ -1,23 +1,10 @@
-import { useEffect, useState } from 'react'
 import { SearcherInput, PokeList, Loading } from './components'
-import { usePokemon } from './hooks/usePokemon'
-import { PokemonSprite } from './interfaces/pokeapi'
+import { usePokemon, usePokemonSearch } from './hooks'
 
 export const PokeApp = () => {
-  const [term, setTerm] = useState('')
   const { isLoading, simplePokemonList } = usePokemon()
-  const [pokesFiltered, setPokesFiltered] =
-    useState<PokemonSprite[]>(simplePokemonList)
 
-  useEffect(() => {
-    if (term.length === 0) setPokesFiltered(simplePokemonList)
-
-    setPokesFiltered(
-      simplePokemonList.filter((poke) =>
-        poke.name.toLocaleLowerCase().includes(term.toLocaleLowerCase())
-      )
-    )
-  }, [term])
+  const { pokesFiltered, setTerm } = usePokemonSearch(simplePokemonList)
 
   if (isLoading) {
     return <Loading />
