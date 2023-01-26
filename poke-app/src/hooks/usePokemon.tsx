@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { pokeApi } from '../api/pokeApi'
 import {
   PokemonSprite,
   PokemonsResp,
@@ -15,13 +14,16 @@ export const usePokemon = () => {
   const getAllPokemons = async () => {
     setIsLoading(true)
 
-    const resp = await pokeApi.get<PokemonsResp>(
-      'https://pokeapi.co/api/v2/pokemon?limit=1279'
-    )
+    try {
+      const resp = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1279')
+      const { results }: PokemonsResp = await resp.json()
 
-    mapPokemonList(resp.data.results)
+      setSimplePokemonList(mapPokemonList(results))
 
-    setIsLoading(false)
+      setIsLoading(false)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const mapPokemonList = (pokemonList: SimplePokemon[]) => {
@@ -33,12 +35,11 @@ export const usePokemon = () => {
       return { id, name, picture }
     })
 
-    setSimplePokemonList(pokemonWithSprite)
+    return pokemonWithSprite
   }
 
   useEffect(() => {
     getAllPokemons()
-    console.log('me llamé')
   }, [])
 
   return {
