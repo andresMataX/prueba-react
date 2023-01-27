@@ -12,7 +12,7 @@ export const Navbar = ({ isTheme = false }: Props) => {
 
   return (
     <div
-      className="flex px-5 py-3 mb-3"
+      className="flex px-5 py-3 mb-4"
       style={{
         backgroundColor: colors.background,
         justifyContent: isTheme ? 'end' : '',
@@ -37,7 +37,10 @@ export const Navbar = ({ isTheme = false }: Props) => {
         <>
           <NavLink
             className="py-2 px-3 bg-white text-sm font-semibold rounded-md shadow-lg focus:outline-none"
-            style={{ color: colors.card, backgroundColor: colors.primary }}
+            style={{
+              color: colors.background,
+              backgroundColor: colors.primary,
+            }}
             to="/"
           >
             Regresar
