@@ -1,10 +1,11 @@
 import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { ThemeContext } from '../context/ThemeContext'
+import { IQuotes } from '../interfaces/quotes'
 
-interface Props {}
+interface Props extends IQuotes {}
 
-export const QuoteItem = ({}: Props) => {
+export const QuoteItem = ({ quote, author, id }: Props) => {
   const { colors } = useContext(ThemeContext)
 
   return (
@@ -13,19 +14,16 @@ export const QuoteItem = ({}: Props) => {
       style={{ backgroundColor: colors.card }}
     >
       <NavLink to="/quote/2">
-        <p className="text-base text-white font-normal">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Necessitatibus veritatis dolorem accusantium ducimus velit
-          voluptatibus libero aliquam sed. Exercitationem et omnis consequuntur
-          minima amet accusantium dolore commodi illo eos cum?
-        </p>
+        <p className="text-base text-white font-normal">"{quote}"</p>
       </NavLink>
 
       <div className="flex justify-between mt-3 items-center">
         <button className="bg-red-500 hover:bg-red-700 px-5 py-2 text-sm leading-5 rounded-full font-semibold text-white">
           Delete Quote
         </button>
-        <p className="text-lg text-white font-extralight text-end">- Poto</p>
+        <p className="text-lg text-white font-extralight text-end">
+          - {author}
+        </p>
       </div>
     </div>
   )

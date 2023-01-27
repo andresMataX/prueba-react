@@ -1,13 +1,17 @@
 import { Form, QuotesList } from '../componets'
+import { IQuotes } from '../interfaces/quotes'
 
-interface Props {}
+interface Props {
+  setQuotes: React.Dispatch<React.SetStateAction<IQuotes[]>>
+  quotes: IQuotes[]
+}
 
-export const Quotes = ({}: Props) => {
+export const Quotes = ({ setQuotes, quotes }: Props) => {
   return (
     <div className="container mx-auto grid grid-cols-3">
-      <Form />
+      <Form setQuotes={setQuotes} quotes={quotes} />
 
-      <QuotesList />
+      <QuotesList quotes={quotes} />
     </div>
   )
 }

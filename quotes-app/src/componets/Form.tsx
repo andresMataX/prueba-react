@@ -3,19 +3,34 @@ import { ThemeContext } from '../context/ThemeContext'
 import { AuthorInput } from './AuthorInput'
 import { QuoteInput } from './QuoteInput'
 import { useForm } from '../hooks/useForm'
+import { IQuotes } from '../interfaces/quotes'
 
-interface Props {}
+interface Props {
+  setQuotes: React.Dispatch<React.SetStateAction<IQuotes[]>>
+  quotes: IQuotes[]
+}
 
-export const Form = ({}: Props) => {
+export const Form = ({ quotes, setQuotes }: Props) => {
   const { colors } = useContext(ThemeContext)
 
-  const { author, quote, onChange, form } = useForm({ author: '', quote: '' })
+  const { author, quote, onChange, resetForm } = useForm({
+    author: '',
+    quote: '',
+  })
 
   const onCreate = () => {
     if (!author || !quote)
       return alert('Campos Incompletos. Favor de llenar todos los campos.')
 
-    console.log(form)
+    const newQuote = {
+      author,
+      quote,
+      id: new Date().getTime(),
+    }
+
+    setQuotes([...quotes, newQuote])
+
+    resetForm()
   }
 
   return (
