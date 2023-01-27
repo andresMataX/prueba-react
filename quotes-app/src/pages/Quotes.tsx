@@ -6,13 +6,48 @@ export const Quotes = ({}: Props) => {
   const { colors } = useContext(ThemeContext)
 
   return (
-    <div
-      className="rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-md w-full"
-      style={{ backgroundColor: colors.primary }}
-    >
-      <h1 className="text-3xl md:text-2xl font-light text-white text-center">
-        Hola
-      </h1>
+    <div className="container mx-auto">
+      <div
+        className="rounded-lg px-3  py-4 shadow-md w-1/4"
+        style={{ backgroundColor: colors.card }}
+      >
+        <label className="text-3xl md:text-2x text-white font-light text-center">
+          Author
+        </label>
+        <input
+          className="w-full border-b text-white focus:outline-none px-2 py-1 mt-2"
+          style={{
+            backgroundColor: colors.card,
+            borderColor: colors.border,
+          }}
+        />
+      </div>
+
+      <div
+        className="rounded-lg px-3 py-4 shadow-md w-1/4 mt-5"
+        style={{ backgroundColor: colors.card }}
+      >
+        <label className="text-3xl md:text-2xl text-white font-light text-center">
+          Quote
+        </label>
+        <textarea
+          name=""
+          cols={50}
+          rows={5}
+          className="w-full border-b text-white focus:outline-none px-2 py-1 mt-2"
+          style={{
+            backgroundColor: colors.card,
+            borderColor: colors.border,
+          }}
+        />
+      </div>
+
+      <button
+        className="py-3 text-lg font-semibold rounded-md shadow-md w-1/4 mt-5 text-white"
+        style={{ backgroundColor: colors.primary }}
+      >
+        Agregar
+      </button>
     </div>
   )
 }

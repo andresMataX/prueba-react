@@ -5,16 +5,12 @@ import { ThemeProvider } from './context/ThemeContext'
 import { QuotesApp } from './QuotesApp'
 import './index.css'
 
-const AppState = ({ children }: any) => {
-  return <ThemeProvider>{children}</ThemeProvider>
-}
-
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
-      <AppState>
+      <ThemeProvider>
         <QuotesApp />
-      </AppState>
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
 )

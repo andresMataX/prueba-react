@@ -15,7 +15,6 @@ export const QuotesApp = ({}: Props) => {
   const { pathname } = useLocation()
 
   useEffect(() => {
-    console.log('cambiaste de ruta')
     pathname.includes('quote') ? setIsTheme(false) : setIsTheme(true)
   }, [pathname])
 

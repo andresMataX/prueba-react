@@ -12,7 +12,7 @@ export const Navbar = ({ isTheme = false }: Props) => {
 
   return (
     <div
-      className="flex px-5 py-3"
+      className="flex px-5 py-3 mb-3"
       style={{
         backgroundColor: colors.background,
         justifyContent: isTheme ? 'end' : '',

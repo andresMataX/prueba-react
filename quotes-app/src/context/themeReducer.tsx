@@ -7,8 +7,8 @@ export const lightTheme: ThemeState = {
   colors: {
     background: 'white',
     border: 'black',
-    card: 'white',
-    primary: '#084F6A',
+    card: '#084F6A',
+    primary: '#6D7787',
     secondary: '#4697B8',
     text: '#17202A',
   },
