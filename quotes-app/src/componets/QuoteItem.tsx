@@ -13,7 +13,7 @@ export const QuoteItem = ({ quote, author, id }: Props) => {
       className="rounded-lg px-3 py-4 shadow-md mb-5"
       style={{ backgroundColor: colors.card }}
     >
-      <NavLink to="/quote/2">
+      <NavLink to={`/quote/${id}`} state={{ quote, author, id }}>
         <p className="text-base text-white font-normal">"{quote}"</p>
       </NavLink>
 

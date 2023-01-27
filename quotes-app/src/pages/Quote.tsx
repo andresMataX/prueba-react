@@ -1,16 +1,26 @@
+import { useLocation } from 'react-router-dom'
+import { IQuotes } from '../interfaces/quotes'
 interface Props {}
 
 export const Quote = ({}: Props) => {
+  const { state } = useLocation()
+  const quote: IQuotes = state
+
+  if (!state) {
+    return (
+      <div className="container mx-auto mt-0">
+        <p className="text-4xl text-black font-normal">No Quote.</p>
+      </div>
+    )
+  }
+
   return (
     <div className="container mx-auto mt-0">
-      <p className="text-4xl text-black font-normal">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
-        veritatis dolorem accusantium ducimus velit voluptatibus libero aliquam
-        sed. Exercitationem et omnis consequuntur minima amet accusantium dolore
-        commodi illo eos cum?
-      </p>
+      <p className="text-4xl text-black font-normal">"{quote.quote}"</p>
 
-      <p className="text-3xl text-black font-extralight text-end">- Poto</p>
+      <p className="text-3xl text-black font-extralight text-end">
+        - {quote.author}
+      </p>
     </div>
   )
 }

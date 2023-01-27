@@ -13,7 +13,7 @@ interface Props {
 export const Form = ({ quotes, setQuotes }: Props) => {
   const { colors } = useContext(ThemeContext)
 
-  const { author, quote, onChange, resetForm } = useForm({
+  const { author, quote, onChange, resetForm } = useForm<IQuotes>({
     author: '',
     quote: '',
   })
