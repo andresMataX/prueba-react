@@ -7,7 +7,7 @@ export const Form = ({}: Props) => {
   const { colors } = useContext(ThemeContext)
 
   return (
-    <div className="bg-slate-800">
+    <div>
       <div
         className="rounded-lg px-3 py-4 shadow-md w-3/4"
         style={{ backgroundColor: colors.card }}
@@ -47,7 +47,7 @@ export const Form = ({}: Props) => {
         className="py-3 text-lg font-semibold rounded-md shadow-md w-3/4 mt-5 text-white"
         style={{ backgroundColor: colors.primary }}
       >
-        Agregar
+        Add Quote
       </button>
     </div>
   )

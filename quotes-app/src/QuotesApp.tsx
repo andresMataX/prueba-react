@@ -21,7 +21,7 @@ export const QuotesApp = ({}: Props) => {
   return (
     <div
       style={{ backgroundColor: colors.background }}
-      className="h-screen w-screen"
+      className="max-h-screen max-w-screen"
     >
       <Navbar isTheme={isTheme} />
 
