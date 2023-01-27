@@ -3,7 +3,7 @@ import { ThemeState } from './ThemeContext'
 type ThemeAction = { type: 'light_theme' } | { type: 'dark_theme' }
 
 export const lightTheme: ThemeState = {
-  currentTheme: 'light',
+  dark: false,
   colors: {
     background: 'white',
     border: 'black',
@@ -15,7 +15,7 @@ export const lightTheme: ThemeState = {
 }
 
 export const darkTheme: ThemeState = {
-  currentTheme: 'dark',
+  dark: true,
   colors: {
     background: '#1E293B',
     primary: '#75CEDB',

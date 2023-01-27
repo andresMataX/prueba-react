@@ -3,7 +3,7 @@ import { themeReducer, lightTheme } from './themeReducer'
 
 // Definimos la información
 export interface ThemeState {
-  currentTheme: 'light' | 'dark'
+  dark: boolean
   colors: {
     background: string
     primary: string
