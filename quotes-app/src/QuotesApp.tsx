@@ -13,9 +13,7 @@ export const QuotesApp = ({}: Props) => {
 
   const [isTheme, setIsTheme] = useState(true)
 
-  const savedQuotes = JSON.parse(localStorage.getItem('quotes') || '') || []
-
-  const [quotes, setQuotes] = useState<IQuotes[]>(savedQuotes)
+  const [quotes, setQuotes] = useState<IQuotes[]>([])
 
   const { pathname } = useLocation()
 

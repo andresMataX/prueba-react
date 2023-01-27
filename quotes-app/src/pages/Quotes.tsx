@@ -11,7 +11,7 @@ export const Quotes = ({ setQuotes, quotes }: Props) => {
     <div className="container mx-auto grid grid-cols-3">
       <Form setQuotes={setQuotes} quotes={quotes} />
 
-      <QuotesList quotes={quotes} />
+      <QuotesList quotes={quotes} setQuotes={setQuotes} />
     </div>
   )
 }
