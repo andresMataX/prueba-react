@@ -9,12 +9,13 @@ interface Props {
 export const QuotesList = ({ quotes, setQuotes }: Props) => {
   return (
     <div className="col-span-2">
-      {quotes.map((quote) => (
+      {quotes.map((quote, i) => (
         <QuoteItem
           key={quote.id}
           {...quote}
           quotes={quotes}
           setQuotes={setQuotes}
+          index={i}
         />
       ))}
     </div>
