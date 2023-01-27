@@ -28,6 +28,10 @@ export const Form = ({ quotes, setQuotes }: Props) => {
       id: new Date().getTime(),
     }
 
+    localStorage.setItem('poto', 'a')
+
+    localStorage.setItem('quotes', JSON.stringify([...quotes, newQuote]))
+
     setQuotes([...quotes, newQuote])
 
     resetForm()

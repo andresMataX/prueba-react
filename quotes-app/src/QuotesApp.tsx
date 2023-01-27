@@ -12,7 +12,10 @@ export const QuotesApp = ({}: Props) => {
   const { colors } = useContext(ThemeContext)
 
   const [isTheme, setIsTheme] = useState(true)
-  const [quotes, setQuotes] = useState<IQuotes[]>([])
+
+  const savedQuotes = JSON.parse(localStorage.getItem('quotes') || '') || []
+
+  const [quotes, setQuotes] = useState<IQuotes[]>(savedQuotes)
 
   const { pathname } = useLocation()
 
