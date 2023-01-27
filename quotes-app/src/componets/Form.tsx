@@ -1,51 +1,33 @@
 import { useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
+import { AuthorInput } from './AuthorInput'
+import { QuoteInput } from './QuoteInput'
+import { useForm } from '../hooks/useForm'
 
 interface Props {}
 
 export const Form = ({}: Props) => {
   const { colors } = useContext(ThemeContext)
 
+  const { author, quote, onChange, form } = useForm({ author: '', quote: '' })
+
+  const onCreate = () => {
+    if (!author || !quote)
+      return alert('Campos Incompletos. Favor de llenar todos los campos.')
+
+    console.log(form)
+  }
+
   return (
     <div>
-      <div
-        className="rounded-lg px-3 py-4 shadow-md w-3/4"
-        style={{ backgroundColor: colors.card }}
-      >
-        <label className="text-3xl md:text-2x text-white font-light text-center">
-          Author
-        </label>
-        <input
-          className="w-full border-b text-white focus:outline-none px-2 py-1 mt-2"
-          style={{
-            backgroundColor: colors.card,
-            borderColor: colors.border,
-          }}
-        />
-      </div>
+      <AuthorInput colors={colors} author={author} onChange={onChange} />
 
-      <div
-        className="rounded-lg px-3 py-4 shadow-md w-3/4 mt-5"
-        style={{ backgroundColor: colors.card }}
-      >
-        <label className="text-3xl md:text-2xl text-white font-light text-center">
-          Quote
-        </label>
-        <textarea
-          name=""
-          cols={50}
-          rows={5}
-          className="w-full border-b text-white focus:outline-none px-2 py-1 mt-2"
-          style={{
-            backgroundColor: colors.card,
-            borderColor: colors.border,
-          }}
-        />
-      </div>
+      <QuoteInput colors={colors} quote={quote} onChange={onChange} />
 
       <button
         className="py-3 text-lg font-semibold rounded-md shadow-md w-3/4 mt-5 text-white"
         style={{ backgroundColor: colors.primary }}
+        onClick={onCreate}
       >
         Add Quote
       </button>
