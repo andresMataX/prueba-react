@@ -40,6 +40,6 @@ export const themeReducer = (
         ...lightTheme,
       }
     default:
-      return { ...state }
+      return state
   }
 }

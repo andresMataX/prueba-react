@@ -20,14 +20,11 @@ interface ThemeContextProps extends ThemeState {
   setLightTheme: () => void
 }
 
-// Estado inicial
-export const themeInitialState: ThemeState = lightTheme
-
 export const ThemeContext = createContext({} as ThemeContextProps)
 
 // Proveemos el contexto
 export const ThemeProvider = ({ children }: any) => {
-  const [state, dispatch] = useReducer(themeReducer, themeInitialState)
+  const [state, dispatch] = useReducer(themeReducer, lightTheme)
 
   const setDarkTheme = () => {
     dispatch({ type: 'dark_theme' })
